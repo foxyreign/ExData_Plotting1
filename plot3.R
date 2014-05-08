@@ -12,7 +12,7 @@ feb$DateTime <- strptime(paste(feb$Date, feb$Time), format="%d/%m/%Y %H:%M:%S")
 
 # Plot histogram
 par(mfrow=c(1,1))
-png(filename='plot3.png', width=480, height=480)
+png(filename='plot3.png', width=480, height=480, bg='transparent')
 plot(x=feb$DateTime, y=as.numeric(feb$Sub_metering_1), type='l', xlab='', ylab='Energy sub metering')
 lines(x=feb$DateTime, y=as.numeric(feb$Sub_metering_2), type='l', col='red')
 lines(x=feb$DateTime, y=as.numeric(feb$Sub_metering_3), type='l', col='blue')
