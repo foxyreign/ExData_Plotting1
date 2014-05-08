@@ -11,6 +11,7 @@ feb <- subset(data, Date == '1/2/2007' | Date == '2/2/2007')
 feb$DateTime <- strptime(paste(feb$Date, feb$Time), format="%d/%m/%Y %H:%M:%S")
 
 # Plot histogram
+png(filename='plot4.png', width=480, height=480, bg='transparent')
 par(mfrow=c(2,2))
 with(feb, {
     # Plot 1
@@ -25,11 +26,10 @@ with(feb, {
     lines(x=feb$DateTime, y=as.numeric(feb$Sub_metering_2), type='l', col='red')
     lines(x=feb$DateTime, y=as.numeric(feb$Sub_metering_3), type='l', col='blue')
     legend(x='topright', legend=c('Sub_metering_1', 'Sub_metering_2', 'Sub_metering_3'),
-           col=c('black', 'red', 'blue'), lty=c(1, 1, 1), lwd=1, cex=0.5, bty='n', xjust=0, x.intersp=5)
+           col=c('black', 'red', 'blue'), lty=c(1, 1, 1), lwd=1, bty='n')
     
     # Plot 4
     plot(x=feb$DateTime, y=as.numeric(feb$Global_reactive_power), type='l', 
          xlab='datetime', ylab='Global_reactive_power')
 })
-dev.copy(png, file='plot4.png', width=480, height=480, bg='transparent')
 dev.off()
